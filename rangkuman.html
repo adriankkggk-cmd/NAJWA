@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Rangkuman & Evaluasi</title>
+  <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+<nav>
+  <div class="logo">BIO • Rangkuman</div>
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="materi.html">Materi</a>
+    <a href="kuis.html">Kuis</a>
+    <a href="rangkuman.html">Rangkuman</a>
+    <a href="profil.html">Profil</a>
+    <label style="margin-left:12px;">
+      <input id="themeToggle" type="checkbox" /> <span style="font-weight:600">Dark</span>
+    </label>
+  </div>
+</nav>
+
+<section class="hero">
+  <h1>Rangkuman Singkat</h1>
+  <p class="subtitle">Intisari yang wajib diingat untuk fotosintesis</p>
+</section>
+
+<main class="container">
+  <div class="card full">
+    <h3>Poin Penting</h3>
+    <ul>
+      <li>Fotosintesis terjadi di kloroplas; pigmen utama: klorofil.</li>
+      <li>Tahapan utama: reaksi terang (tilakoid) & reaksi gelap / Siklus Calvin (stroma).</li>
+      <li>Rumus: 6CO₂ + 6H₂O + cahaya → C₆H₁₂O₆ + 6O₂.</li>
+      <li>Faktor: cahaya, CO₂, suhu, air, klorofil.</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h3>Evaluasi Terakhir</h3>
+    <div id="evalBox">
+      <p id="evalText">Belum ada hasil kuis.</p>
+      <a class="btn" href="kuis.html">Kerjakan Kuis Sekarang</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>Tips Belajar</h3>
+    <ol>
+      <li>Pelajari rumus & tahap dengan membuat diagram sederhana.</li>
+      <li>Gunakan video sebagai penguat visual (perhatikan bagian reaksi terang/gelap).</li>
+      <li>Latihan soal 10+ untuk mengunci konsep.</li>
+    </ol>
+  </div>
+</main>
+
+<div class="container">
+  <div class="footer">© 2025 — Rangkuman Fotosintesis</div>
+</div>
+
+<script src="assets/js/main.js"></script>
+<script>
+  document.getElementById('themeToggle').addEventListener('change', (e)=>{
+    window.site.toggleTheme(e.target.checked);
+  });
+
+  document.addEventListener('DOMContentLoaded', ()=>{
+    const res = window.site.getLastQuizResult();
+    const evalText = document.getElementById('evalText');
+    if(res){
+      evalText.innerHTML = `Hasil terakhir: ${res.score}/${res.total} (${res.percent}%) — ${new Date(res.timestamp).toLocaleString()}`;
+    } else {
+      evalText.innerText = 'Belum ada hasil kuis. Kerjakan kuis untuk menyimpan hasil.';
+    }
+  });
+</script>
+</body>
+</html>

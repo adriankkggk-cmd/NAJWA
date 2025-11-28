@@ -1,40 +1,244 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Pembelajaran Biologi - Fotosintesis</title>
 
     <style>
         body {
-            font-family: Arial, sans-serif;
             margin: 0;
-            padding: 0;
-            background: #f6f7f9;
+            font-family: "Poppins", Arial, sans-serif;
+            background: #f3f4f6;
             color: #222;
-            line-height: 1.7;
-        }
-        header {
-            background: #2e7d32;
-            color: white;
-            padding: 25px;
-            text-align: center;
-        }
-        main {
-            max-width: 900px;
-            margin: 30px auto;
-            padding: 20px;
-            background: white;
-            border-radius: 12px;
-            box-shadow: 0 6px 18px rgba(0,0,0,0.08);
         }
         h2 {
-            color: #2e7d32;
+            color: #1b5e20;
+            margin-top: 30px;
         }
+        a { text-decoration: none; color: inherit; }
+
+        /* NAVBAR */
+        nav {
+            position: sticky;
+            top: 0;
+            background: #1b5e20;
+            padding: 15px 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: #fff;
+            z-index: 1000;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+        nav .menu a {
+            margin-left: 20px;
+            color: #fff;
+            font-weight: 500;
+        }
+        nav .menu a:hover { text-decoration: underline; }
+
+        /* HERO */
+        .hero {
+            text-align: center;
+            padding: 80px 25px;
+            background: linear-gradient(135deg, #1b5e20, #4caf50);
+            color: white;
+        }
+        .hero h1 {
+            font-size: 38px;
+            margin-bottom: 10px;
+        }
+        .hero p { font-size: 18px; opacity: 0.9; }
+
+        /* CONTAINER */
+        .container {
+            max-width: 900px;
+            margin: auto;
+            padding: 20px;
+        }
+
+        /* CARD */
+        .card {
+            background: white;
+            padding: 20px;
+            margin: 15px 0;
+            border-radius: 14px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+        }
+
+        /* VIDEO RESPONSIVE */
         .video-container {
-            margin: 20px 0;
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%;
+            height: 0;
         }
-        iframe {
+        .video-container iframe {
+            position: absolute;
+            top:0;
+            left:0;
+            width:100%;
+            height:100%;
+            border:0;
+            border-radius: 10px;
+        }
+
+        /* QUIZ */
+        .quiz-box {
+            margin-top: 20px;
+            padding: 20px;
+            border-radius: 10px;
+            background: #e8f5e9;
+            border-left: 6px solid #1b5e20;
+        }
+        button {
+            margin-top: 10px;
+            padding: 10px 16px;
+            background: #1b5e20;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 15px;
+        }
+
+        footer {
+            text-align: center;
+            background: #1b5e20;
+            color: white;
+            padding: 20px;
+            margin-top: 40px;
+        }
+    </style>
+
+    <script>
+        function cekJawaban() {
+            let jawaban = document.querySelector('input[name="q1"]:checked');
+            let hasil = document.getElementById("hasil");
+
+            if (!jawaban) {
+                hasil.innerHTML = "Silakan pilih jawaban dulu.";
+                hasil.style.color = "red";
+                return;
+            }
+
+            if (jawaban.value === "benar") {
+                hasil.innerHTML = "Jawaban benar! 🌿";
+                hasil.style.color = "green";
+            } else {
+                hasil.innerHTML = "Jawaban salah. Coba lagi ya!";
+                hasil.style.color = "red";
+            }
+        }
+    </script>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<nav>
+    <div class="logo"><b>Biologi</b> | Fotosintesis</div>
+    <div class="menu">
+        <a href="#tujuan">Tujuan</a>
+        <a href="#materi">Materi</a>
+        <a href="#video">Video</a>
+        <a href="#kuis">Kuis</a>
+    </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+    <h1>Pembelajaran Biologi: Fotosintesis</h1>
+    <p>Memahami proses dasar kehidupan pada tumbuhan</p>
+</section>
+
+<div class="container">
+
+    <!-- TUJUAN -->
+    <div class="card" id="tujuan">
+        <h2>Tujuan Pembelajaran</h2>
+        <ul>
+            <li>Siswa memahami pengertian fotosintesis.</li>
+            <li>Siswa mengetahui tahap-tahap fotosintesis.</li>
+            <li>Siswa mampu menjelaskan faktor-faktor yang mempengaruhi fotosintesis.</li>
+            <li>Siswa dapat memberi contoh peran fotosintesis dalam kehidupan.</li>
+        </ul>
+    </div>
+
+    <!-- MANFAAT -->
+    <div class="card">
+        <h2>Manfaat Mempelajari Fotosintesis</h2>
+        <ul>
+            <li>Mengetahui bagaimana tumbuhan menghasilkan makanan.</li>
+            <li>Memahami pentingnya oksigen bagi kehidupan manusia.</li>
+            <li>Mengerti peran fotosintesis dalam keseimbangan ekosistem.</li>
+            <li>Menambah pengetahuan tentang proses dasar kehidupan.</li>
+        </ul>
+    </div>
+
+    <!-- MATERI -->
+    <div class="card" id="materi">
+        <h2>Materi: Apa Itu Fotosintesis?</h2>
+        <p>
+            Fotosintesis adalah proses tumbuhan hijau, alga, dan beberapa bakteri mengubah cahaya matahari
+            menjadi energi kimia berupa glukosa. Proses ini berlangsung di kloroplas yang mengandung klorofil.
+        </p>
+
+        <h3>Tahapan Fotosintesis:</h3>
+        <ol>
+            <li><b>Reaksi terang</b> – terjadi di grana dan membutuhkan cahaya matahari.</li>
+            <li><b>Reaksi gelap (Siklus Calvin)</b> – terjadi di stroma dan tidak memerlukan cahaya langsung.</li>
+        </ol>
+
+        <h3>Rumus Fotosintesis:</h3>
+        <p style="text-align:center; font-size: 20px;">
+            <b>6CO₂ + 6H₂O + cahaya → C₆H₁₂O₆ + 6O₂</b>
+        </p>
+
+        <h3>Faktor yang Mempengaruhi:</h3>
+        <ul>
+            <li>Cahaya</li>
+            <li>Konsentrasi CO₂</li>
+            <li>Suhu</li>
+            <li>Air</li>
+            <li>Klorofil</li>
+        </ul>
+    </div>
+
+    <!-- VIDEO PEMBELAJARAN -->
+    <div class="card" id="video">
+        <h2>Video Pembelajaran Fotosintesis</h2>
+        <div class="video-container">
+            <iframe 
+                src="https://www.youtube.com/embed/nlXwuNHF8JM"
+                allowfullscreen>
+            </iframe>
+        </div>
+    </div>
+
+    <!-- KUIS -->
+    <div class="card" id="kuis">
+        <h2>Kuis Singkat</h2>
+        <div class="quiz-box">
+            <p><b>1. Apa bahan utama yang dibutuhkan tumbuhan untuk fotosintesis?</b></p>
+            <label><input type="radio" name="q1" value="salah"> Oksigen & Nitrogen</label><br>
+            <label><input type="radio" name="q1" value="benar"> Karbon dioksida & Air</label><br>
+            <label><input type="radio" name="q1" value="salah"> Garam mineral & Protein</label><br>
+
+            <button onclick="cekJawaban()">Cek Jawaban</button>
+            <p id="hasil" style="font-weight:bold; margin-top:10px;"></p>
+        </div>
+    </div>
+
+</div>
+
+<footer>
+    © 2024 Website Pembelajaran Biologi — Materi Fotosintesis
+</footer>
+
+</body>
+</html>        iframe {
             width: 100%;
             border-radius: 10px;
             height: 360px;

@@ -1,145 +1,158 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Pembelajaran Biologi - Fotosintesis</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pembelajaran Biologi - Fotosintesis</title>
 
-    <style>
-        body {
-            margin: 0;
-            font-family: "Poppins", Arial, sans-serif;
-            background: #f3f4f6;
-            color: #222;
-        }
-        h2 {
-            color: #1b5e20;
-            margin-top: 30px;
-        }
-        a { text-decoration: none; color: inherit; }
+<style>
+    /* ===== GLOBAL ===== */
+    body {
+        margin: 0;
+        font-family: "Poppins", sans-serif;
+        background: #e8f5e9;
+        color: #222;
+    }
+    h2 { color: #1b5e20; }
 
-        /* NAVBAR */
-        nav {
-            position: sticky;
-            top: 0;
-            background: #1b5e20;
-            padding: 15px 25px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            color: #fff;
-            z-index: 1000;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-        }
-        nav .menu a {
-            margin-left: 20px;
-            color: #fff;
-            font-weight: 500;
-        }
-        nav .menu a:hover { text-decoration: underline; }
+    /* ===== ANIMATIONS ===== */
+    @keyframes fadeIn {
+        from {opacity: 0; transform: translateY(20px);}
+        to {opacity: 1; transform: translateY(0);}
+    }
 
-        /* HERO */
-        .hero {
-            text-align: center;
-            padding: 80px 25px;
-            background: linear-gradient(135deg, #1b5e20, #4caf50);
-            color: white;
-        }
-        .hero h1 {
-            font-size: 38px;
-            margin-bottom: 10px;
-        }
-        .hero p { font-size: 18px; opacity: 0.9; }
+    /* ===== NAVBAR ===== */
+    nav {
+        position: sticky;
+        top: 0;
+        padding: 15px 30px;
+        background: #1b5e20;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        color: white;
+        z-index: 1000;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    }
+    nav a {
+        color: white;
+        margin-left: 20px;
+        text-decoration: none;
+        font-weight: 500;
+    }
+    nav a:hover {
+        text-decoration: underline;
+        opacity: 0.8;
+    }
 
-        /* CONTAINER */
-        .container {
-            max-width: 900px;
-            margin: auto;
-            padding: 20px;
+    /* ===== HERO ===== */
+    .hero {
+        text-align: center;
+        padding: 90px 25px;
+        background: linear-gradient(135deg, #1b5e20, #4caf50, #7cd67c);
+        color: white;
+        animation: fadeIn 1s ease;
+    }
+    .hero h1 {
+        font-size: 42px;
+        margin-bottom: 10px;
+        text-shadow: 2px 2px 6px rgba(0,0,0,0.3);
+    }
+
+    /* ===== CARD STYLE ===== */
+    .container {
+        max-width: 1000px;
+        margin: 25px auto;
+        padding: 0 20px;
+    }
+    .card {
+        background: rgba(255,255,255,0.9);
+        backdrop-filter: blur(6px);
+        padding: 22px;
+        border-radius: 14px;
+        margin: 15px 0;
+        box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+        animation: fadeIn 0.8s ease;
+    }
+
+    /* ===== VIDEO ===== */
+    .video-container {
+        position: relative;
+        padding-bottom: 56.25%;
+        height: 0;
+    }
+    iframe {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        border: 0;
+        border-radius: 15px;
+    }
+
+    /* ===== QUIZ ===== */
+    .quiz-box {
+        background: #f1f8e9;
+        padding: 20px;
+        border-left: 6px solid #1b5e20;
+        border-radius: 10px;
+        margin-top: 20px;
+    }
+    .quiz-box h3 {
+        margin-top: 0;
+    }
+    button {
+        background: #1b5e20;
+        color: white;
+        padding: 10px 16px;
+        border-radius: 6px;
+        font-size: 15px;
+        border: none;
+        cursor: pointer;
+        margin-top: 10px;
+    }
+    button:hover {
+        opacity: 0.8;
+    }
+
+    /* ===== FOOTER ===== */
+    footer {
+        background: #1b5e20;
+        color: white;
+        text-align: center;
+        padding: 18px;
+        margin-top: 40px;
+    }
+</style>
+
+<script>
+    function cekKuis() {
+        let skor = 0;
+
+        const jawaban = {
+            q1: "b",
+            q2: "a",
+            q3: "c"
+        };
+
+        for (let nomor in jawaban) {
+            let pilihan = document.querySelector(`input[name="${nomor}"]:checked`);
+            if (pilihan && pilihan.value === jawaban[nomor]) skor++;
         }
 
-        /* CARD */
-        .card {
-            background: white;
-            padding: 20px;
-            margin: 15px 0;
-            border-radius: 14px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
-        }
+        document.getElementById("hasilAkhir").innerHTML =
+            "Skor kamu: " + skor + "/3";
 
-        /* VIDEO RESPONSIVE */
-        .video-container {
-            position: relative;
-            width: 100%;
-            padding-bottom: 56.25%;
-            height: 0;
-        }
-        .video-container iframe {
-            position: absolute;
-            top:0;
-            left:0;
-            width:100%;
-            height:100%;
-            border:0;
-            border-radius: 10px;
-        }
+        document.getElementById("hasilAkhir").style.fontSize = "20px";
+        document.getElementById("hasilAkhir").style.fontWeight = "bold";
+    }
+</script>
 
-        /* QUIZ */
-        .quiz-box {
-            margin-top: 20px;
-            padding: 20px;
-            border-radius: 10px;
-            background: #e8f5e9;
-            border-left: 6px solid #1b5e20;
-        }
-        button {
-            margin-top: 10px;
-            padding: 10px 16px;
-            background: #1b5e20;
-            color: white;
-            border: none;
-            border-radius: 6px;
-            cursor: pointer;
-            font-size: 15px;
-        }
-
-        footer {
-            text-align: center;
-            background: #1b5e20;
-            color: white;
-            padding: 20px;
-            margin-top: 40px;
-        }
-    </style>
-
-    <script>
-        function cekJawaban() {
-            let jawaban = document.querySelector('input[name="q1"]:checked');
-            let hasil = document.getElementById("hasil");
-
-            if (!jawaban) {
-                hasil.innerHTML = "Silakan pilih jawaban dulu.";
-                hasil.style.color = "red";
-                return;
-            }
-
-            if (jawaban.value === "benar") {
-                hasil.innerHTML = "Jawaban benar! 🌿";
-                hasil.style.color = "green";
-            } else {
-                hasil.innerHTML = "Jawaban salah. Coba lagi ya!";
-                hasil.style.color = "red";
-            }
-        }
-    </script>
 </head>
-
 <body>
 
-<!-- NAVBAR -->
 <nav>
-    <div class="logo"><b>Biologi</b> | Fotosintesis</div>
-    <div class="menu">
+    <div><b>Biologi</b> | Fotosintesis</div>
+    <div>
         <a href="#tujuan">Tujuan</a>
         <a href="#materi">Materi</a>
         <a href="#video">Video</a>
@@ -147,68 +160,47 @@
     </div>
 </nav>
 
-<!-- HERO -->
 <section class="hero">
-    <h1>Pembelajaran Biologi: Fotosintesis</h1>
-    <p>Memahami proses dasar kehidupan pada tumbuhan</p>
+    <h1>Pembelajaran Fotosintesis</h1>
+    <p>Proses yang membuat tumbuhan menjadi sumber kehidupan bagi makhluk hidup lainnya.</p>
 </section>
 
 <div class="container">
 
     <!-- TUJUAN -->
     <div class="card" id="tujuan">
-        <h2>Tujuan Pembelajaran</h2>
+        <h2>🎯 Tujuan Pembelajaran</h2>
         <ul>
-            <li>Siswa memahami pengertian fotosintesis.</li>
-            <li>Siswa mengetahui tahap-tahap fotosintesis.</li>
-            <li>Siswa mampu menjelaskan faktor-faktor yang mempengaruhi fotosintesis.</li>
-            <li>Siswa dapat memberi contoh peran fotosintesis dalam kehidupan.</li>
-        </ul>
-    </div>
-
-    <!-- MANFAAT -->
-    <div class="card">
-        <h2>Manfaat Mempelajari Fotosintesis</h2>
-        <ul>
-            <li>Mengetahui bagaimana tumbuhan menghasilkan makanan.</li>
-            <li>Memahami pentingnya oksigen bagi kehidupan manusia.</li>
-            <li>Mengerti peran fotosintesis dalam keseimbangan ekosistem.</li>
-            <li>Menambah pengetahuan tentang proses dasar kehidupan.</li>
+            <li>Memahami pengertian fotosintesis dengan benar.</li>
+            <li>Menjelaskan tahap-tahap fotosintesis.</li>
+            <li>Menganalisis faktor-faktor yang mempengaruhi fotosintesis.</li>
+            <li>Mengidentifikasi manfaat fotosintesis bagi kehidupan.</li>
         </ul>
     </div>
 
     <!-- MATERI -->
     <div class="card" id="materi">
-        <h2>Materi: Apa Itu Fotosintesis?</h2>
+        <h2>📘 Materi: Apa Itu Fotosintesis?</h2>
         <p>
-            Fotosintesis adalah proses tumbuhan hijau, alga, dan beberapa bakteri mengubah cahaya matahari
-            menjadi energi kimia berupa glukosa. Proses ini berlangsung di kloroplas yang mengandung klorofil.
+            Fotosintesis adalah proses tumbuhan mengubah cahaya matahari menjadi energi kimia berupa glukosa.
+            Proses ini dilakukan oleh klorofil dalam kloroplas.
         </p>
 
-        <h3>Tahapan Fotosintesis:</h3>
+        <h3>🌱 Tahapan Fotosintesis</h3>
         <ol>
-            <li><b>Reaksi terang</b> – terjadi di grana dan membutuhkan cahaya matahari.</li>
-            <li><b>Reaksi gelap (Siklus Calvin)</b> – terjadi di stroma dan tidak memerlukan cahaya langsung.</li>
+            <li><b>Reaksi Terang</b> – butuh cahaya, terjadi di grana.</li>
+            <li><b>Reaksi Gelap (Siklus Calvin)</b> – tidak butuh cahaya langsung, terjadi di stroma.</li>
         </ol>
 
-        <h3>Rumus Fotosintesis:</h3>
-        <p style="text-align:center; font-size: 20px;">
-            <b>6CO₂ + 6H₂O + cahaya → C₆H₁₂O₆ + 6O₂</b>
+        <h3>🧪 Rumus Fotosintesis</h3>
+        <p style="text-align:center; font-size: 22px; font-weight: bold;">
+            6CO₂ + 6H₂O + cahaya → C₆H₁₂O₆ + 6O₂
         </p>
-
-        <h3>Faktor yang Mempengaruhi:</h3>
-        <ul>
-            <li>Cahaya</li>
-            <li>Konsentrasi CO₂</li>
-            <li>Suhu</li>
-            <li>Air</li>
-            <li>Klorofil</li>
-        </ul>
     </div>
 
-    <!-- VIDEO PEMBELAJARAN -->
+    <!-- VIDEO -->
     <div class="card" id="video">
-        <h2>Video Pembelajaran Fotosintesis</h2>
+        <h2>🎥 Video Pembelajaran</h2>
         <div class="video-container">
             <iframe 
                 src="https://www.youtube.com/embed/nlXwuNHF8JM"
@@ -219,146 +211,34 @@
 
     <!-- KUIS -->
     <div class="card" id="kuis">
-        <h2>Kuis Singkat</h2>
-        <div class="quiz-box">
-            <p><b>1. Apa bahan utama yang dibutuhkan tumbuhan untuk fotosintesis?</b></p>
-            <label><input type="radio" name="q1" value="salah"> Oksigen & Nitrogen</label><br>
-            <label><input type="radio" name="q1" value="benar"> Karbon dioksida & Air</label><br>
-            <label><input type="radio" name="q1" value="salah"> Garam mineral & Protein</label><br>
+        <h2>📝 Kuis Interaktif</h2>
 
-            <button onclick="cekJawaban()">Cek Jawaban</button>
-            <p id="hasil" style="font-weight:bold; margin-top:10px;"></p>
+        <div class="quiz-box">
+            <h3>1. Apa bahan utama fotosintesis?</h3>
+            <label><input type="radio" name="q1" value="a"> Oksigen dan nitrogen</label><br>
+            <label><input type="radio" name="q1" value="b"> Karbon dioksida dan air</label><br>
+            <label><input type="radio" name="q1" value="c"> Protein dan mineral</label><br>
         </div>
+
+        <div class="quiz-box">
+            <h3>2. Di mana reaksi terang terjadi?</h3>
+            <label><input type="radio" name="q2" value="a"> Grana</label><br>
+            <label><input type="radio" name="q2" value="b"> Sitoplasma</label><br>
+            <label><input type="radio" name="q2" value="c"> Inti sel</label><br>
+        </div>
+
+        <div class="quiz-box">
+            <h3>3. Apa hasil utama fotosintesis?</h3>
+            <label><input type="radio" name="q3" value="a"> Lemak</label><br>
+            <label><input type="radio" name="q3" value="b"> Protein</label><br>
+            <label><input type="radio" name="q3" value="c"> Glukosa dan oksigen</label><br>
+        </div>
+
+        <button onclick="cekKuis()">Cek Jawaban</button>
+        <p id="hasilAkhir" style="margin-top: 20px;"></p>
     </div>
 
 </div>
-
-<footer>
-    © 2024 Website Pembelajaran Biologi — Materi Fotosintesis
-</footer>
-
-</body>
-</html>        iframe {
-            width: 100%;
-            border-radius: 10px;
-            height: 360px;
-        }
-        .quiz-box {
-            margin-top: 25px;
-            padding: 20px;
-            background: #e8f5e9;
-            border-left: 6px solid #2e7d32;
-            border-radius: 10px;
-        }
-        button {
-            margin-top: 10px;
-            padding: 10px 16px;
-            background: #2e7d32;
-            color: white;
-            border: none;
-            border-radius: 6px;
-            cursor: pointer;
-            font-size: 15px;
-        }
-        footer {
-            text-align: center;
-            color: #666;
-            padding: 20px;
-        }
-    </style>
-
-    <script>
-        function cekJawaban() {
-            let jawaban = document.querySelector('input[name="q1"]:checked');
-            let hasil = document.getElementById("hasil");
-
-            if (!jawaban) {
-                hasil.innerHTML = "Silakan pilih jawaban dulu.";
-                hasil.style.color = "red";
-                return;
-            }
-
-            if (jawaban.value === "benar") {
-                hasil.innerHTML = "Jawaban benar! 🌿";
-                hasil.style.color = "green";
-            } else {
-                hasil.innerHTML = "Jawaban salah. Coba lagi ya!";
-                hasil.style.color = "red";
-            }
-        }
-    </script>
-</head>
-
-<body>
-
-<header>
-    <h1>Pembelajaran Biologi: Fotosintesis</h1>
-    <p>Dibuat untuk keperluan pembelajaran siswa</p>
-</header>
-
-<main>
-
-    <h2>Tujuan Pembelajaran</h2>
-    <ul>
-        <li>Siswa memahami pengertian fotosintesis.</li>
-        <li>Siswa mengetahui tahap-tahap fotosintesis.</li>
-        <li>Siswa mampu menjelaskan faktor-faktor yang mempengaruhi fotosintesis.</li>
-        <li>Siswa dapat memberi contoh peran fotosintesis dalam kehidupan.</li>
-    </ul>
-
-    <h2>Manfaat Mempelajari Fotosintesis</h2>
-    <ul>
-        <li>Mengetahui bagaimana tumbuhan menghasilkan makanan.</li>
-        <li>Memahami pentingnya oksigen yang dihasilkan tumbuhan bagi kehidupan.</li>
-        <li>Menambah wawasan tentang proses alam yang mendukung kehidupan.</li>
-        <li>Membantu memahami konsep ekosistem dan rantai makanan.</li>
-    </ul>
-
-    <h2>Materi: Apa Itu Fotosintesis?</h2>
-    <p>
-        Fotosintesis adalah proses tumbuhan hijau, alga, dan beberapa bakteri dalam 
-        mengubah cahaya matahari menjadi energi kimia dalam bentuk glukosa. 
-        Proses ini terjadi pada organel bernama kloroplas yang mengandung klorofil.
-    </p>
-
-    <h3>Tahapan Fotosintesis:</h3>
-    <ol>
-        <li><b>Reaksi terang</b> – terjadi di grana dan memerlukan cahaya matahari.</li>
-        <li><b>Reaksi gelap (siklus Calvin)</b> – terjadi di stroma dan tidak memerlukan cahaya langsung.</li>
-    </ol>
-
-    <h3>Rumus Fotosintesis:</h3>
-    <p style="text-align:center; font-size: 18px;">
-        6CO₂ + 6H₂O + cahaya → C₆H₁₂O₆ + 6O₂
-    </p>
-
-    <h3>Faktor yang Mempengaruhi Fotosintesis:</h3>
-    <ul>
-        <li>Cahaya</li>
-        <li>Konsentrasi CO₂</li>
-        <li>Suhu</li>
-        <li>Ketersediaan air</li>
-        <li>Klorofil</li>
-    </ul>
-
-    <h2>Video Pembelajaran Fotosintesis</h2>
-    <div class="video-container">
-        <iframe src="https://www.youtube.com/embed/UPBMGZ8LN_E" allowfullscreen></iframe>
-    </div>
-
-    <h2>Kuis Singkat</h2>
-
-    <div class="quiz-box">
-        <p><b>1. Apa bahan utama yang dibutuhkan tumbuhan untuk fotosintesis?</b></p>
-        <label><input type="radio" name="q1" value="salah"> Oksigen & Nitrogen</label><br>
-        <label><input type="radio" name="q1" value="benar"> Karbon dioksida & Air</label><br>
-        <label><input type="radio" name="q1" value="salah"> Garam mineral & Protein</label><br>
-
-        <button onclick="cekJawaban()">Cek Jawaban</button>
-        <p id="hasil" style="font-weight:bold"></p>
-    </div>
-
-</main>
 
 <footer>
     © 2024 Website Pembelajaran Biologi — Materi Fotosintesis

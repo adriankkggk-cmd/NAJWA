@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Profil Pembuat</title>
+  <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+<nav>
+  <div class="logo">BIO • Profil</div>
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="materi.html">Materi</a>
+    <a href="kuis.html">Kuis</a>
+    <a href="rangkuman.html">Rangkuman</a>
+    <a href="profil.html">Profil</a>
+    <label style="margin-left:12px;">
+      <input id="themeToggle" type="checkbox" /> <span style="font-weight:600">Dark</span>
+    </label>
+  </div>
+</nav>
+
+<section class="hero">
+  <h1>Profil Pembuat</h1>
+  <p class="subtitle">Informasi untuk kredibilitas dan kontak</p>
+</section>
+
+<main class="container">
+  <div class="grid">
+    <div class="card">
+      <h3>Nama</h3>
+      <p>Najwa Reski Amalia (contoh)</p>
+    </div>
+
+    <div class="card">
+      <h3>Identitas</h3>
+      <p>NIM: H0323309<br>Program Studi: Pendidikan Biologi</p>
+    </div>
+
+    <div class="card full">
+      <h3>Kontak & Sumber</h3>
+      <p>Untuk materi lebih lanjut, hubungi dosen atau gunakan sumber ilmiah seperti buku biologi kelas, jurnal, dan situs edukasi.</p>
+      <p>Email contoh: najwa@example.com</p>
+    </div>
+  </div>
+</main>
+
+<div class="container">
+  <div class="footer">© 2025 — Profil Pembuat</div>
+</div>
+
+<script src="assets/js/main.js"></script>
+<script>
+  document.getElementById('themeToggle').addEventListener('change', (e)=>{
+    window.site.toggleTheme(e.target.checked);
+  });
+</script>
+</body>
+</html>

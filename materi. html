@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Materi - Fotosintesis</title>
+  <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+<nav>
+  <div class="logo">BIO • Fotosintesis</div>
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="materi.html">Materi</a>
+    <a href="kuis.html">Kuis</a>
+    <a href="rangkuman.html">Rangkuman</a>
+    <a href="profil.html">Profil</a>
+    <label style="margin-left:12px;">
+      <input id="themeToggle" type="checkbox" /> <span style="font-weight:600">Dark</span>
+    </label>
+  </div>
+</nav>
+
+<section class="hero">
+  <h1>Materi Fotosintesis</h1>
+  <p class="subtitle">Definisi, tahapan, rumus, dan faktor yang mempengaruhi</p>
+</section>
+
+<main class="container">
+  <div class="grid">
+    <div class="card full">
+      <h3>Pengantar</h3>
+      <p>Fotosintesis adalah proses biokimia pada tumbuhan hijau dan organisme fotosintetik lain
+        untuk mengubah energi cahaya menjadi energi kimia (glukosa). Proses ini penting karena menjadi
+        dasar rantai makanan dan sumber oksigen di atmosfer.</p>
+    </div>
+
+    <div class="card">
+      <h3>Tahapan Utama</h3>
+      <ol>
+        <li><b>Reaksi Terang</b> — terjadi pada tilakoid/grana, menghasilkan ATP dan NADPH.</li>
+        <li><b>Reaksi Gelap (Siklus Calvin)</b> — terjadi di stroma, menggunakan ATP/NADPH untuk sintesis gula.</li>
+      </ol>
+    </div>
+
+    <div class="card">
+      <h3>Faktor yang Mempengaruhi</h3>
+      <ul>
+        <li>Cahaya (intensitas & spektrum)</li>
+        <li>Ketersediaan CO₂</li>
+        <li>Suhu (enzim bekerja optimal pada rentang tertentu)</li>
+        <li>Ketersediaan air</li>
+        <li>Konsentrasi klorofil</li>
+      </ul>
+    </div>
+
+    <div class="card full">
+      <h3>Video Pembelajaran</h3>
+      <div class="video-wrap">
+        <iframe src="https://www.youtube.com/embed/nlXwuNHF8JM" allowfullscreen></iframe>
+      </div>
+    </div>
+
+    <div class="card full">
+      <h3>Contoh Aplikasi</h3>
+      <p>Pengelolaan tanaman, agronomi (penentuan cahaya & nutrisi), serta penelitian produksi biomassa
+         dan mitigasi CO₂.</p>
+    </div>
+  </div>
+</main>
+
+<div class="container">
+  <div class="footer">© 2025 — Materi Fotosintesis</div>
+</div>
+
+<script src="assets/js/main.js"></script>
+<script>
+  document.getElementById('themeToggle').addEventListener('change', (e) => {
+    window.site.toggleTheme(e.target.checked);
+  });
+</script>
+</body>
+</html>
